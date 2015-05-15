@@ -1,0 +1,14 @@
+ .container {
+    padding: 10px;
+}
+.navbar-nav>li>img {
+    padding: 8px;
+}
+
+.nav.mini>li>a {
+	padding: 1px;
+}
+
+div.carousel-caption>div>ul>li {
+    text-align: left;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>REPL</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Loading Bootstrap -->
+<link href="css/vendor/bootstrap.min.css" rel="stylesheet">
+
+<!-- Loading Flat UI -->
+<link href="css/flat-ui.min.css" rel="stylesheet">
+
+<link rel="shortcut icon" href="img/favicon.ico">
+<link href="css/vendor/jquery.terminal.css" rel="stylesheet" />
+
+</head>
+<body>
+  <div class="container">
+		<div class="col-md-9">
+			<div id="console"></div>
+		</div>
+  </div>
+  <footer>
+   <div class="container">
+      <div class="row">
+         <div class="col-xs-7">
+            <h3 class="footer-title">About</h3>
+            <p>Please go to <a href="http://www.incapturetechnologies.com">http://www.incapturetechnologies.com</a> for more information</p>
+         </div>
+      </div>
+   </div>
+</footer>
+<script>
+    window.$ = window.jQuery = require('./js/vendor/jquery.min.js');
+</script>
+<script src="js/vendor/jquery.terminal-min.js"></script>
+<script src="js/rapture/repl.js"></script>
+
+</body>
+</html>

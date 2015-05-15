@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Rapture Reflex REPL</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Loading Bootstrap -->
+    <link href="css/vendor/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Loading Flat UI -->
+    <link href="css/flat-ui.min.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="img/favicon.ico">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="js/vendor/html5shiv.js"></script>
+      <script src="js/vendor/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+		  .login-error    {color:#E74C3C}
+	</style>
+
+  </head>
+  <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-2">
+            <img src="img/RapturelogoSM.png" alt="Welcome to Rapture"/>
+           </div>
+           <div class="col-xs-10">
+             <nav class="navbar navbar-inverse navbar-embossed" role="navigation">
+              <div class="collapse navbar-collapse">
+                 <ul class="nav navbar-nav navbar-left">
+                   <li><a href="#">Overview</a></li>
+                   <li><a href="#">About</a></li>
+                 </ul>
+                 <ul class="nav navbar-nav navbar-right">
+                  <li><a href="#" id="loginLink">Login</a></li>
+                 </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+        <h2>Rapture Reflex REPL</h2>
+        <p>This application runs a Reflex REPL (Read/Eval/Print/Loop) against an existing Rapture environment. You need to login to a Rapture environment first.
+        Click on the login button at the top right of this window.
+        </p>
+    </div>
+    <div class="modal fade" id="loginForm">
+		<div class="modal-dialog">
+
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">x</button>
+						<h3>Login</h3>
+				</div>
+				<div class="modal-body">
+           			 <div class="form-group">
+              			<input type="text" class="form-control login-field" value="" placeholder="Enter the url of the Rapture environment" id="login-url" />
+              			<label class="login-field-icon fui-user" for="login-url"></label>
+            		</div>
+           			 <div class="form-group">
+              			<input type="text" class="form-control login-field" value="" placeholder="Enter your name" id="login-name" />
+              			<label class="login-field-icon fui-user" for="login-name"></label>
+            		</div>
+
+            		<div class="form-group">
+             			 <input type="password" class="form-control login-field" value="" placeholder="Password" id="login-pass" />
+              			<label class="login-field-icon fui-lock" for="login-pass"></label>
+            		</div>
+
+            		<a class="btn btn-primary btn-lg btn-block" id="doLogin" href="#">Log in</a>
+            		<p class="login-error" id="error"></p>
+            	</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- /.container -->
+
+    <footer>
+	   <div class="container">
+	      <div class="row">
+	         <div class="col-xs-7">
+	            <h3 class="footer-title">About</h3>
+	            <p>Please go to <a href="http://www.incapturetechnologies.com">http://www.incapturetechnologies.com</a> for more information</p>
+	         </div>
+	      </div>
+	   </div>
+	</footer>
+
+    <!-- jQuery (necessary for Flat UI's JavaScript plugins) -->
+   <script>
+       window.$ = window.jQuery = require('./js/vendor/jquery.min.js');
+   </script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/vendor/video.js"></script>
+    <script src="js/flat-ui.min.js"></script>
+    <script type="text/javascript" src="js/md5.js"></script>
+    <script src="js/login.js"></script>
+
+  </body>
+</html>
