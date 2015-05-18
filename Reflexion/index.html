@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Incapture Reflexion</title>
+
+<script src="zepto.min.js"></script>
+<script>
+	$ = jQuery = require('./js/jquery.js');
+</script>
+<script src="js/jquery.terminal-min.js"></script>
+<script src="editor.js"></script>
+
+<script src="cm/lib/codemirror.js"></script>
+<script src="cm/mode/reflex/reflex.js"></script>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="cm/lib/codemirror.css">
+<link rel="stylesheet" href="cm/theme/lesser-dark.css">
+<link href="css/jquery.terminal.css" rel="stylesheet" />
+</head>
+<body>
+<div id="editor"></div>
+<div id="repl"></div>
+
+<div class="info">
+  <label>Filename: </label><span id="title"></span>
+  <label>Mode: </label><span id="mode"></span>
+</div>
+
+</body>
+</html>
