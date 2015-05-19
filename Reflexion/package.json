@@ -1,5 +1,18 @@
 {
   "name"    : "Reflexion",
+  "appname" : "reflexion",
   "version" : "0.1.0",
-  "main"    : "main.js"
+  "main"    : "main.js",
+  "dependencies" : {
+
+  },
+  "devDependencies" : {
+    "electron-packager" : "^3.1.0",
+    "electron-prebuilt" : "^0.25.2"
+  },
+  "scripts" : {
+    "start" : "electron main.js",
+    "dev" : "electron main.js",
+    "bundle" : "electron-packager . Reflexion --ignore=node_modules/electron-prebuilt && cp info.plist Reflexion.app/Contents/Info.plist && cp icon.icns Reflexion.app/Contents/Resources/atom.icns"
+  }
 }

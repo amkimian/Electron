@@ -12,29 +12,38 @@ button {
 .CodeMirror {
   margin: 0;
   padding: 0;
-}
-
-.CodeMirror-scroll {
+  position: absolute;
   height: auto;
   overflow-y: hidden;
   overflow-x: auto;
+  font-family: "Lucida Console", Monaco, monospace;
 }
+
+.CodeMirror-code {
+    font-size: 16px;
+    line-height: 20px;
+}
+
 
 #editor {
   position: absolute;
-  bottom: 120px;
+  bottom: 24px;
   top: 0px;
   left: 0;
-  right: 0;
+  width:60%;
+  overflow: auto;
   background: #262626;
 }
 
 #repl {
   position: absolute;
-  bottom: 20px;
-  height: 100px;
-  left: 0;
-  right: 0;
+  bottom: 24px;
+  top: 0px;
+  right: 0px;
+  width: 40%;
+  overflow: auto;
+  background: #131313;
+
 }
 
 

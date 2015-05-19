@@ -13,18 +13,22 @@
 <script src="cm/lib/codemirror.js"></script>
 <script src="cm/mode/reflex/reflex.js"></script>
 
-<link rel="stylesheet" href="style.css">
+
 <link rel="stylesheet" href="cm/lib/codemirror.css">
 <link rel="stylesheet" href="cm/theme/lesser-dark.css">
+<link rel="stylesheet" href="style.css">
 <link href="css/jquery.terminal.css" rel="stylesheet" />
 </head>
 <body>
+<div class="main">
 <div id="editor"></div>
 <div id="repl"></div>
+</div>
 
 <div class="info">
-  <label>Filename: </label><span id="title"></span>
-  <label>Mode: </label><span id="mode"></span>
+  <label>Rapture: </label><span id="infoRapture"></span>
+  <label>Local: </label><span id="infoLocal"></span>
+	<label>Remote: </label><span id="infoRemote"></span>
 </div>
 
 </body>

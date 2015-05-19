@@ -10,13 +10,14 @@ var MenuItem = remote.require('menu-item');
 var dialog = remote.require('dialog');
 var fs = require("fs");
 var clipboard = require('clipboard');
+var csole = require('./console.js');
 
 function handleDocumentChange(title) {
   var mode = "reflex";
   var modeName = "Reflex";
   if (title) {
     title = title.match(/[^/]+$/)[0];
-    document.getElementById("title").innerHTML = title;
+    //document.getElementById("title").innerHTML = title;
     document.title = title;
     if (title.match(/.json$/)) {
       mode = {name: "javascript", json: true};
@@ -29,10 +30,10 @@ function handleDocumentChange(title) {
       modeName = "CSS";
     }
   } else {
-    document.getElementById("title").innerHTML = "[no document loaded]";
+    //document.getElementById("title").innerHTML = "[no document loaded]";
   }
   editor.setOption("mode", mode);
-  document.getElementById("mode").innerHTML = modeName;
+  //document.getElementById("mode").innerHTML = modeName;
 }
 
 function newFile() {
@@ -157,27 +158,29 @@ onload = function() {
         }
       });
 
+  //editor.on("change", function(what) {
+  //   console.log(what);
+  //});
+
+  csole.setEditor(editor);
   newFile();
   onresize();
 
   var settings = {
     prompt : 'reflex> ',
     name : 'reflex',
-    height : 80,
+  //  height : 400,
     outputLimit: 1000,
     enabled : false,
-    greetings : 'Reflex console',
+    greetings : 'Reflexion console',
     onInit : function(term) {
       theTerm = term;
     }
 
   };
 
-  $('#repl').terminal(
-      function(command, term) {
-        // Pass this onto Reflex
-        term.echo(command);
-      }, settings);
+  $('#repl').terminal(csole.terminal, settings);
+
 }
 
 
