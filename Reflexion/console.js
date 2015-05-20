@@ -70,12 +70,12 @@ function saveLocal(command, term) {
 
 function saveRemoteWithFollowup(command, term, follow) {
   var str = editor.getValue();
-  rapture.Script.doesScriptExist(scriptUri, function(data) {
+  rapture.Script.doesScriptExist(scriptUri, function(err, data) {
       if (data) {
-        rapture.Script.getScript(scriptUri, function(data) {
+        rapture.Script.getScript(scriptUri, function(err, data) {
             console.log(JSON.stringify(data));
             data.script = str;
-            rapture.Script.putScript(scriptUri, data, function(d) {
+            rapture.Script.putScript(scriptUri, data, function(err, d) {
                 greenText("Script updated remotely", term);
                 info.setRemoteChanged(false);
                 if (follow != null) {
@@ -84,12 +84,16 @@ function saveRemoteWithFollowup(command, term, follow) {
             });
         });
       } else {
-        rapture.Script.createScript(scriptUri, "REFLEX", "PROGRAM", str, function(d) {
-            greenText("Script created remotely", term);
-            info.setRemoteChanged(false);
-            if (follow != null) {
-              follow(command, term);
-            }
+        rapture.Script.createScript(scriptUri, "REFLEX", "PROGRAM", str, function(err, d) {
+            if (err) {
+              term.error(err);
+            } else {
+              greenText("Script created remotely", term);
+              info.setRemoteChanged(false);
+              if (follow != null) {
+                follow(command, term);
+              }
+          }
         });
       }
   });
@@ -123,11 +127,15 @@ function startsWith(str, what) {
 
 function connectRapture(command, term) {
     greenText("Connecting to Rapture", term);
-    rapture.login('rapture','rapture', function(data) {
+    rapture.login('rapture','rapture', function(err, data) {
+      if (err) {
+        term.error(err);
+      } else {
        yellowText("Connected", term);
        connectedToRapture = true;
        document.title = "CONNECTED";
        info.setRaptureEnv("localhost");
+     }
     });
 }
 
@@ -136,10 +144,14 @@ function loadScript(command, term) {
       term.error("Not connected. Please :connect first!");
     } else {
       scriptUri = command.trim();
-      rapture.Script.getScript(scriptUri, function(data) {
+      rapture.Script.getScript(scriptUri, function(err, data) {
+        if (err) {
+          term.error(err);
+        } else {
         editor.setValue(data.script);
         yellowText("Loaded script " + scriptUri, term);
         info.setRemoteFile(scriptUri);
+      }
       });
     }
 }
@@ -147,12 +159,16 @@ function loadScript(command, term) {
 function reallyRun(command, term) {
   // Maybe save script auto first
   var params = {};
-  rapture.Script.runScriptExtended(scriptUri, params, function(data) {
+  rapture.Script.runScriptExtended(scriptUri, params, function(err, data) {
       // output is the output
+      if (err) {
+        term.error(err);
+      } else {
       for(var i=0; i< data.output.length; i++) {
         yellowText(data.output[i], term);
       }
       greenText("Return value is " + data.returnValue, term);
+    }
   });
 }
 
